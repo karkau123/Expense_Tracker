@@ -9,7 +9,7 @@ class Expense {
   Expense({required this.title,
    required this.amount,
     required this.date,
-    required this.category,
+    required this.category, 
     }) : id = uuid.v4();  // this creates a unique id and assigns it to the id property
 
   final String id;
