@@ -21,7 +21,14 @@ class ExpenseItem extends StatelessWidget {
                 Text(
                     'Rs ${expense.amount.toStringAsFixed(2)}'), // after decimal only two places
                     const Spacer(),
-                    Row(),
+                    Row(
+                      children: [
+                       const  Icon(Icons.alarm),
+                        const SizedBox(width: 8,),
+                        Text (expense.date.toString()),
+
+                      ],
+                    ),
               ],
             )
           ],
