@@ -11,7 +11,6 @@ const CategoryIcons = {
   Category.leisure:Icons.movie,
   Category.work: Icons.work,
   };
-
 class Expense {
   Expense({
     required this.title,
