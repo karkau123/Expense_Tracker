@@ -1,16 +1,19 @@
 import 'package:uuid/uuid.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
+final formatter = DateFormat.yMd();
 const uuid = Uuid();
 
 enum Category { food, travel, leisure, work }
 
 const CategoryIcons = {
   Category.food: Icons.lunch_dining,
-  Category.travel:Icons.flight,
-  Category.leisure:Icons.movie,
+  Category.travel: Icons.flight,
+  Category.leisure: Icons.movie,
   Category.work: Icons.work,
-  };
+};
+
 class Expense {
   Expense({
     required this.title,
@@ -27,4 +30,7 @@ class Expense {
   // add flutter pub  add uuid to generate unique id of your expenses
   final Category
       category; // Category is of type enum which aloows only predefied options
+  String get Formatteddate {
+    return formatter.format(date);
+  }
 }
