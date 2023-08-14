@@ -10,36 +10,56 @@ class NewExpense extends StatefulWidget {
 }
 
 class _NewExpenseState extends State<NewExpense> {
-  var _enteredTitle = "";
-  void _saveTitleInput(String inputValue){
-      _enteredTitle = inputValue;
+  final _titleController = TextEditingController();
+  final _amountController = TextEditingController();
+  @override
+  void dispose() {
+    // very important
+    // TODO: implement dispose
+    _titleController
+        .dispose(); // always dispose of else text ill remain in memory ans app may crash
+    _amountController.dispose();
+    super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
-    return  Padding(
-      padding: const EdgeInsets.fromLTRB(16, 0, 16,0),
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
       child: Column(
-      children: [
-       TextField(
-        onChanged:_saveTitleInput  ,
-        maxLength: 50,
-        decoration: InputDecoration(
-          label: Text ('Title'),
-        ),
-       ),
-      
-     Row (
         children: [
-           ElevatedButton(
-            onPressed:  (){
-            print(_enteredTitle);
-           },
-            child: const Text('Save Expense'),
+          TextField(
+            controller: _titleController,
+            maxLength: 50,
+            decoration: InputDecoration(
+              label: Text('Title'),
             ),
+          ),
+          TextField(
+            controller: _amountController,
+            keyboardType: TextInputType.number,
+            decoration: InputDecoration(
+              prefixText: 'Rs ',
+              label: Text('Amount'),
+            ),
+          ),
+          Row(
+            children: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text('Cancel')),
+              ElevatedButton(
+                onPressed: () {
+                  print(_titleController.text);
+                  print(_amountController.text);
+                },
+                child: const Text('Save Expense'),
+              ),
+            ],
+          )
         ],
-     )
-
-      ],
       ),
     );
   }
