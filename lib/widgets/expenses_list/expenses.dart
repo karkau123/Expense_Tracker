@@ -1,11 +1,10 @@
-import 'package:expense_tracker/widgets/expenses_list/expenses_list.dart';
-import 'package:expense_tracker/widgets/expenses_list/new_expense.dart';
+ import 'package:expense_tracker/widgets/expenses_list/new_expense.dart';
 import 'package:flutter/material.dart';
+
+import 'package:expense_tracker/widgets/expenses_list/expenses_list.dart';
 import 'package:expense_tracker/models/expense.dart';
 
-// this first class is our widget class
 class Expenses extends StatefulWidget {
-// Add our constructor
   const Expenses({super.key});
 
   @override
@@ -14,57 +13,63 @@ class Expenses extends StatefulWidget {
   }
 }
 
-// this second class is our state class
 class _ExpensesState extends State<Expenses> {
-  final List<Expense> _registerdExpenses = [
+  final List<Expense> _registeredExpenses = [
     Expense(
-        title: 'Flutter Course',
-        amount: 499,
-        date: DateTime.now(),
-        category: Category.work),
+      title: 'Flutter Course',
+      amount: 19.99,
+      date: DateTime.now(),
+      category: Category.work,
+    ),
     Expense(
       title: 'Cinema',
-      amount: 1000,
+      amount: 15.69,
       date: DateTime.now(),
       category: Category.leisure,
-    )
+    ),
   ];
+
   void _openAddExpenseOverlay() {
     showModalBottomSheet(
       isScrollControlled: true,
       context: context,
-      builder: (ctx) =>  NewExpense(onAddExpense:_addExpense),
-
+      builder: (ctx) => NewExpense(onAddExpense: _addExpense),
     );
   }
 
-  void _addExpense(Expense expenses) {
+  void _addExpense(Expense expense) {
     setState(() {
-       _registerdExpenses.add(expenses);
+      _registeredExpenses.add(expense);
     });
-   
+  }
+
+  void _removeExpense(Expense expense) {
+    setState(() {
+      _registeredExpenses.remove(expense);
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Expense Tracker',
-        ),
+        title: const Text('Flutter ExpenseTracker'),
         actions: [
           IconButton(
-            onPressed: (_openAddExpenseOverlay),
-            icon: Icon(Icons.add),
+            onPressed: _openAddExpenseOverlay,
+            icon: const Icon(Icons.add),
           ),
         ],
       ),
       body: Column(
-        // toolbaar
-
         children: [
-          const Text('The Chart'),
-          Expanded(child: ExpensesList(expenses: _registerdExpenses)),
+          const Text('The chart'),
+          Expanded(
+            child: ExpensesList(
+              expenses: _registeredExpenses,
+              onRemoveExpense: _removeExpense,
+            ),
+          ),
         ],
       ),
     );
