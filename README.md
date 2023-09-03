@@ -3,13 +3,7 @@
 https://github.com/karkau123/Expense_Tracker_App/assets/105882265/bfd00bc3-3133-4c6d-bf08-6969646ea787
  
  
- <style>
-    .rounded-image {
-        border-radius: 10px; /* You can adjust the radius value to control the roundness of the corners */
-        margin-right: 30px; /* Adjust the margin as needed */
-    }
-</style>
-
+ 
 <br>
 <img src="https://github.com/karkau123/Expense_Tracker_App/assets/105882265/0ce0f2ff-1e56-4ca4-9dec-9d0e52d45e58" alt="Screenshot_20230903_133953" width="250" height="auto" class="rounded-image">
 <img src="https://github.com/karkau123/Expense_Tracker_App/assets/105882265/d9f441af-0592-45a9-92cb-41a6a34aedf7" alt="Screenshot_20230903_135556" width="250" height="auto" class="rounded-image">
